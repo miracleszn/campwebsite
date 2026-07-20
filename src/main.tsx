@@ -8,11 +8,13 @@ import SignUpVerify from './pages/SignUpVerify.tsx'
 import Home from './pages/Home.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Property from './pages/Property.tsx'
+import Login from './pages/Login.tsx'
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   { path:"/", element:<App/> },
+  { path:"/login", element:<Login/>},
   { path:"/signup", element:<SignUp/>},
   { path:"/verifyOTP", element:<SignUpVerify/>},
   { path:"/home", element:<Home/>},

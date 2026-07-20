@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from './ui/button';
 import unavailable from "../assets/icons/unavailable.svg"
 import { Link } from 'react-router-dom';
+import locationIcon from '../assets/icons/location.svg'
 
 interface PropertyCardProps {
     id : number;
@@ -26,8 +27,8 @@ const PropertyCard = ({ id, title, location, price, image, bedroom, bathroom, sq
                 {/* Title, location, rating, reviews */}
                 <div className='flex justify-between'>
                     <div className='flex flex-1 flex-col gap-1.75'>
-                        <h3 className='font-SFNSExpanded text-[20px] text-white [-webkit-text-stroke:0.5px_#ffffff]'>{title.length > 20 ? title.slice(0, 20) + '...' : title}</h3>
-                        <div className='flex items-center gap-0.75'><img src="/location.svg" alt="" /><span className='text-[rgba(255,255,255,0.76)] font-WFVisualSans font-semibold capitalize'>{location.length > 24 ? location.slice(0, 24) + '...' : location}</span></div>
+                        <h3 className='font-SFNSExpanded text-[20px] text-white [-webkit-text-stroke:0.5px_#ffffff]'>{title.length > 18 ? title.slice(0, 18) + '...' : title}</h3>
+                        <div className='flex items-center gap-0.75'><img src={locationIcon} alt="" /><span className='text-[rgba(255,255,255,0.76)] font-WFVisualSans font-semibold capitalize'>{location.length > 20 ? location.slice(0, 20) + '...' : location}</span></div>
                     </div>
                     <div className='font-WFVisualSans font-semibold'>
                         <i className="fa-solid fa-star text-[#FFC300]"></i>

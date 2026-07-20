@@ -18,8 +18,8 @@ const SignUp = () => {
 
     const { register, handleSubmit, formState : { errors, isSubmitting }, unregister } = useForm<formFields>({
         defaultValues: {
-        email: "miraclediamond99@gmail.com",
-        phoneNumber: "",
+        // email: "miraclediamond99@gmail.com",
+        // phoneNumber: "",
         userName: "testauthenticate",
         
     },
@@ -82,7 +82,14 @@ const SignUp = () => {
                         <div className='text-red-500 text-[10px]'>{errors.passWord?.message}</div>
                     )}
                     <div className='mt-[5px] mb-[38px] flex justify-between'>
-                        <button className='font-StackSansHeadline signUpAnchorTags' type='button' onClick={() => setUseEmail(!useEmail)}>{useEmail ? "Use Phone Number" : "Use Email"}</button>
+                        <button className='font-StackSansHeadline signUpAnchorTags' type='button' onClick={() => {
+                            if (useEmail) {
+                                unregister("email");       // Wipes email data if switching to phone
+                            } else {
+                                unregister("phoneNumber"); // Wipes phone data if switching to email
+                            }
+                            setUseEmail(!useEmail);
+                        }}>{useEmail ? "Use Phone Number" : "Use Email"}</button>
                         <a className='font-StackSansHeadline signUpAnchorTags' href="#">Forget Password?</a>
                     </div>
                     <div className='h-[50px] w-fit px-[13px] justify-self-center mb-[20px] flex gap-3 items-center justify-center rounded-[100px] bg-[#F8F8F8] text-[14px] font-medium font-StackSansHeadline text-[#7E7E7E]'>
@@ -93,7 +100,7 @@ const SignUp = () => {
                         <button className='block h-[60px] mb-[20px] w-full p-1.75 bg-[#003286] rounded-[100px] font-WFVisualSans font-semibold text-white' disabled={isSubmitting} type="submit">{isSubmitting ? "Processing..." : "Register"}</button>
                     {/* </Link> */}
                 </form>
-                <p className='font-medium text-center text-[14px] text-[#3C4A42] font-WFVisualSans'>Already have an account? <a className='underline font-WFVisualSans font-bold' href="">Login</a></p>
+                <p className='font-medium text-center text-[14px] text-[#3C4A42] font-WFVisualSans'>Already have an account? <a className='underline font-WFVisualSans font-bold cursor-pointer' onClick={() => navigate("/login")}>Login</a></p>
             </div>
         </div>
         <div className='flex-1 bg-cover' style={{ backgroundImage: `url(${signUpImage})` }}>

@@ -13,3 +13,53 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/* 1. The container for the scrollbar */
+.description::-webkit-scrollbar {
+  width: 5px;  /* Width of vertical scrollbar */
+  height: 5px; /* Height of horizontal scrollbar */
+}
+
+/* 2. The background track */
+/* ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+} */
+
+/* 3. The draggable progress bar (thumb) */
+.description::-webkit-scrollbar-thumb {
+  background: #003286;
+  border-radius: 5px;
+}
+
+/* 4. Handle on hover */
+.description::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+
+.glass-card {
+  
+  /* 1. FROST: Blurs the content behind the element */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* 2. LIGHT & OPACITY: -45 deg angle gradient simulating the light source */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 100%);
+  
+  /* 3. REFRACTIVE EDGE: Gives the illusion of thick glass edges */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  
+  /* 4. DEPTH & SPLAY: Inner shadow for thickness + outer soft ambient shadow */
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.5), /* Top inner light highlight */
+    0 10px 30px rgba(0, 0, 0, 0.15);          /* Soft ambient shadow drop */
+}
+
+.stopTop {
+
+    border-top: none;
+    box-shadow: 
+    inset 0 0px 0px rgba(255, 255, 255, 0.5), /* Top inner light highlight */
+    0 10px 30px rgba(0, 0, 0, 0.15) !important;     /* Soft ambient shadow drop */
+}

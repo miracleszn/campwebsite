@@ -5,6 +5,8 @@ import Landing from './pages/Landing'
 import PaginatedProductList from './pages/PaginateTesting'
 import SignUp from './pages/SignUp'
 import SignUpVerify from './pages/SignUpVerify'
+import 'leaflet/dist/leaflet.css';
+
 
 function App() {
 

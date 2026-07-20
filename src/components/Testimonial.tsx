@@ -167,7 +167,7 @@ function Testimonial() {
                             </div>
 
                             <div className="h-[57px] flex gap-4 items-center">
-                                <div className="w-[57px] h-full bg-red-300 rounded-full"></div>
+                                <div className="w-[57px] h-full bg-[rgba(0,50,134,0.13)] content-center text-center font-WFVisualSans font-bold text-[24px] text-white rounded-full">{testimonial.name.charAt(0)}</div>
                                 <div className="flex flex-col gap-1.25">
                                     <h2 className="font-SFNSExpanded leading-7 text-[24px] text-[#003286] [-webkit-text-stroke:0.5px_#003286]">{testimonial.name}</h2>
                                     <span className="font-WFVisualSans font-medium text-[rgba(0,0,0,0.5)]">{testimonial.role}</span>

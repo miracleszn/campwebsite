@@ -11,6 +11,7 @@ import zoomIn from "../assets/icons/zoom-in.svg"
 import filterIcon from "../assets/icons/filterIcon.svg"
 import CampaignBox from '@/components/CampaignBox'
 import Footer from '@/components/Footer'
+import loadingVideo from '../assets/videos/loadingVideo.webm'
 
 const LIMIT = 12
 const TOTAL_ITEMS = 50 // The Platzi API typically defaults to ~50 products
@@ -19,7 +20,7 @@ const TOTAL_PAGES = Math.ceil(TOTAL_ITEMS / LIMIT)
 const fetchListing = async (page: number): Promise<any> => {
     const offset = (page - 1) * LIMIT
 
-//   await new Promise((resolve) => setTimeout(resolve, 2000))
+  await new Promise((resolve) => setTimeout(resolve, 6000))
 
     const response = await fetch(`https://api.escuelajs.co/api/v1/products?offset=${offset}&limit=${LIMIT}`)
     if (!response.ok) throw new Error("Failed to fetch products")
@@ -45,7 +46,7 @@ const Home = () => {
 
 
 
-    if (isLoading) return <div className="p-8 text-center">Loading items...</div>
+    if (isLoading) return <div className="p-8 flex items-center justify-center h-screen w-full text-center"><video className='w-300px' src={loadingVideo} autoPlay loop ></video></div>
     if (isError) return <div className="p-8 text-red-500">Error: {error.message}</div>
     
     
