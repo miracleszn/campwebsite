@@ -1,14 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 // import { Button } from './ui/button'
 import { Eye, EyeOff } from "lucide-react"
-import campLogo from "../assets/icons/campLogo.svg"
 import rightBg from "../assets/images/loginRightBg.png"
 import leftBg from "../assets/images/loginLeftBg_crop.png"
-import pic1 from "../assets/images/login_1.jpg"
 import pic2 from "../assets/images/login_2.png"
-import pic3 from "../assets/images/login_3.png"
 
 type formFields = {
     email: string,
@@ -20,7 +17,7 @@ type formFields = {
 
 const Login = () => {
 
-    const { register, handleSubmit, formState : { errors, isSubmitting }, unregister } = useForm<formFields>({
+    const { register, handleSubmit, formState : { errors, isSubmitting } } = useForm<formFields>({
         defaultValues: {
         email: "miraclediamond99@gmail.com",
         phoneNumber: "",
@@ -34,12 +31,9 @@ const Login = () => {
     const navigate = useNavigate()
 
 
-    const onSubmit : SubmitHandler<formFields> = async (data) => {
-
-        const { isAgreed, ...formData } = data
+    const onSubmit : SubmitHandler<formFields> = async () => {
 
         await new Promise((resolve) => setTimeout(resolve, 2000))
-        console.log(formData)
         navigate("/verifyOTP")
     }
 
@@ -52,10 +46,10 @@ const Login = () => {
     //     }, [useEmail, unregister])
 
   return (
-    <div className='h-[100dvh] flex'>
+    <div className='min-h-[100dvh] flex flex-col md:flex-row'>
 
-        <div className='flex-1 flex justify-center bg-right bg-auto bg-no-repeat items-center' style={{ backgroundImage: `url(${leftBg})` }}>
-            <div className='w-[482px]'>
+        <div className='flex-1 flex justify-center bg-right bg-auto bg-no-repeat items-center py-10 md:py-8' style={{ backgroundImage: `url(${leftBg})` }}>
+            <div className='w-full max-w-[482px] px-5 sm:px-8'>
                 <h1 className='text-[20px] font-SFNSExpanded [-webkit-text-stroke:0.5px_#003286] text-center text-[#003286] mb-[15px]'>Get Right Back</h1>
                 <p className='text-[16px] text-center font-WFVisualSans opacity-50 font-medium mb-[38px]'>Please fill in the information to proceed.</p>
                 <form action="" onSubmit={handleSubmit(onSubmit)} className=''>
@@ -100,19 +94,17 @@ const Login = () => {
                 <p className='font-medium text-center text-[14px] text-[#3C4A42] font-WFVisualSans'>Don’t have an account? <a className='underline font-WFVisualSans font-bold cursor-pointer' onClick={() => navigate("/signup")}>Create an account</a></p>
             </div>
         </div>
-        <div className='flex-1 bg-left bg-auto bg-no-repeat bg-[#003286]' style={{ backgroundImage: `url(${rightBg})` }}>
+        <div className='hidden md:block md:flex-1 min-h-[300px] bg-left bg-cover bg-no-repeat bg-[#003286]' style={{ backgroundImage: `url(${rightBg})` }}>
             {/* <img className='mt-[45px] ml-[45px]' src={campLogo} alt="" /> */}
             <div className='h-full justify-self-end flex gap-[17px] mr-[23px]'> {/* Column */}
                 <div className='w-[151px] h-full flex gap-[20px] flex-col'>
-                    <div className='h-[154px] overflow-hidden rounded-br-[100px]'>
-                        <img className='h-full w-full object-center' src={pic1} alt="" />
+                    <div className='flex-3 overflow-hidden bg-white rounded-br-[100px]'>
+                        {/* <img className='h-full w-full object-cover' src={pic1} alt="" /> */}
                     </div>
-                    <div className='flex-1 overflow-hidden rounded-tl-[100px] rounded-br-[100px]'> {/* or h-[307px] */}
-                        <img className='h-full w-full object-center' src={pic2} alt="" />
+                    <div className='flex-2 overflow-hidden rounded-t-[100px]'> {/* or h-[307px] */}
+                        <img className='h-full w-full object-cover' src={pic2} alt="" />
                     </div>
-                    <div className='h-[154px] rounded-tl-[100px] content-end glass-card'>
-                        <p className='text-center h-[106px] content-center font-WFVisualSans font-bold text-[26px] text-white'>Stopping<br/>Greed</p>
-                    </div>
+                    
                 </div>
 
                 <div className='w-[151px] h-full flex gap-[20px] flex-col'>
@@ -120,9 +112,7 @@ const Login = () => {
                         <p className='text-center leading-8 font-WFVisualSans font-bold text-[32px] text-white'>No<br/>More<br/>Agent<br/>Wahala</p>
                     </div>
                     <div className='h-[151px] rounded-full glass-card'></div>
-                    <div className='flex-1 overflow-hidden rounded-tl-[100px]'>
-                        <img className='h-full w-full object-center' src={pic3} alt="" />
-                    </div>
+                    
                 </div>
                 
             </div>

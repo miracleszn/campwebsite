@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 // import { Button } from './ui/button'
 import { Eye, EyeOff } from "lucide-react"
@@ -30,12 +30,9 @@ const SignUp = () => {
     const navigate = useNavigate()
 
 
-    const onSubmit : SubmitHandler<formFields> = async (data) => {
-
-        const { isAgreed, ...formData } = data
+    const onSubmit : SubmitHandler<formFields> = async () => {
 
         await new Promise((resolve) => setTimeout(resolve, 2000))
-        console.log(formData)
         navigate("/verifyOTP")
     }
 
@@ -48,10 +45,10 @@ const SignUp = () => {
     //     }, [useEmail, unregister])
 
   return (
-    <div className='h-screen flex'>
+    <div className='min-h-screen flex flex-col md:flex-row'>
 
-        <div className='flex-1 bg-white flex justify-center items-center'>
-            <div className='w-[482px]'>
+        <div className='flex-1 bg-white flex justify-center items-center py-10 md:py-8'>
+            <div className='w-full max-w-[482px] px-5 sm:px-8'>
                 <h1 className='text-[20px] font-SFNSExpanded [-webkit-text-stroke:0.5px_#003286] text-center text-[#003286] mb-[15px]'>Sign Up</h1>
                 <p className='text-[16px] text-center font-WFVisualSans opacity-50 font-medium mb-[38px]'>Please fill in the information to proceed.</p>
                 <form action="" onSubmit={handleSubmit(onSubmit)} className=''>
@@ -81,7 +78,7 @@ const SignUp = () => {
                     {errors.passWord && (
                         <div className='text-red-500 text-[10px]'>{errors.passWord?.message}</div>
                     )}
-                    <div className='mt-[5px] mb-[38px] flex justify-between'>
+                    <div className='mt-[5px] mb-[28px] sm:mb-[38px] flex flex-wrap gap-3 justify-between'>
                         <button className='font-StackSansHeadline signUpAnchorTags' type='button' onClick={() => {
                             if (useEmail) {
                                 unregister("email");       // Wipes email data if switching to phone
@@ -92,7 +89,7 @@ const SignUp = () => {
                         }}>{useEmail ? "Use Phone Number" : "Use Email"}</button>
                         <a className='font-StackSansHeadline signUpAnchorTags' href="#">Forget Password?</a>
                     </div>
-                    <div className='h-[50px] w-fit px-[13px] justify-self-center mb-[20px] flex gap-3 items-center justify-center rounded-[100px] bg-[#F8F8F8] text-[14px] font-medium font-StackSansHeadline text-[#7E7E7E]'>
+                    <div className='min-h-[50px] w-full sm:w-fit px-3 sm:px-[13px] justify-self-center mb-[20px] flex gap-3 items-center justify-center rounded-[24px] sm:rounded-[100px] bg-[#F8F8F8] text-[12px] sm:text-[14px] font-medium font-StackSansHeadline text-[#7E7E7E]'>
                         <input className="appearance-none w-5 h-5 bg-gray-300 rounded-full border-none checked:bg-[#003286] bg-[url(/tick.svg)] bg-center bg-no-repeat" type="checkbox" {...register('isAgreed', {required : true})} />
                         <p>I have agree to the <a className='signUpAnchorTags underline' href="#">terms & Condition</a> and <a className='signUpAnchorTags underline' href="#"> Privacy Policy</a></p>
                     </div>
@@ -103,8 +100,8 @@ const SignUp = () => {
                 <p className='font-medium text-center text-[14px] text-[#3C4A42] font-WFVisualSans'>Already have an account? <a className='underline font-WFVisualSans font-bold cursor-pointer' onClick={() => navigate("/login")}>Login</a></p>
             </div>
         </div>
-        <div className='flex-1 bg-cover' style={{ backgroundImage: `url(${signUpImage})` }}>
-            <img className='mt-[45px] ml-[45px]' src={campLogo} alt="" />
+        <div className='hidden md:block md:flex-1 min-h-[300px] bg-cover bg-center' style={{ backgroundImage: `url(${signUpImage})` }}>
+            <img className='mt-8 ml-8 lg:mt-[45px] lg:ml-[45px]' src={campLogo} alt="Camp" />
         </div>
 
     </div>

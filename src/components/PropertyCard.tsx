@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from './ui/button';
 import unavailable from "../assets/icons/unavailable.svg"
 import { Link } from 'react-router-dom';
@@ -21,13 +20,13 @@ interface PropertyCardProps {
 
 const PropertyCard = ({ id, title, location, price, image, bedroom, bathroom, sqft, averageRating, numberOfReviews} : PropertyCardProps) => {
   return (
-    <div key={id} className='rounded-[20px] overflow-hidden h-[492px] bg-[rgba(255,255,255,0.16)]'>
-        <div className='h-[255px]  bg-amber-400'><img className='h-full w-full object-cover' src={image?.[0] || unavailable} alt="" /></div>
-            <div className='px-[22px] mt-[17px]'>
+    <div key={id} className='min-w-0 rounded-[20px] overflow-hidden h-full bg-[rgba(255,255,255,0.16)]'>
+        <div className='h-48 sm:h-56 md:h-[255px] bg-amber-400'><img className='h-full w-full object-cover' src={image?.[0] || unavailable} alt="" /></div>
+            <div className='px-4 sm:px-[22px] mt-4'>
                 {/* Title, location, rating, reviews */}
                 <div className='flex justify-between'>
-                    <div className='flex flex-1 flex-col gap-1.75'>
-                        <h3 className='font-SFNSExpanded text-[20px] text-white [-webkit-text-stroke:0.5px_#ffffff]'>{title.length > 18 ? title.slice(0, 18) + '...' : title}</h3>
+                    <div className='min-w-0 flex flex-1 flex-col gap-1.75'>
+                        <h3 className='truncate font-SFNSExpanded text-[20px] text-white [-webkit-text-stroke:0.5px_#ffffff]'>{title.length > 18 ? title.slice(0, 18) + '...' : title}</h3>
                         <div className='flex items-center gap-0.75'><img src={locationIcon} alt="" /><span className='text-[rgba(255,255,255,0.76)] font-WFVisualSans font-semibold capitalize'>{location.length > 20 ? location.slice(0, 20) + '...' : location}</span></div>
                     </div>
                     <div className='font-WFVisualSans font-semibold'>
@@ -38,17 +37,17 @@ const PropertyCard = ({ id, title, location, price, image, bedroom, bathroom, sq
                 </div>
 
                 {/* Amenities Row */}
-                <div className='flex h-6 mt-6 gap-2.5 font-WFVisualSans font-semibold'>
+                <div className='flex flex-wrap h-auto mt-5 gap-x-3 gap-y-2 font-WFVisualSans font-semibold'>
                     <div className='h-full flex gap-1 items-center'><i className="fa-solid fa-bed text-white"></i><span className='text-[rgba(255,255,255,0.76)]'>{bedroom} Bed</span></div>
                     <div className='h-full flex gap-1 items-center'><i className="fa-solid fa-bath text-white"></i><span className='text-[rgba(255,255,255,0.76)]'>{bathroom} Bath</span></div>
                     <div className='h-full flex gap-1 items-center'><i className="fa-solid fa-flag text-white"></i><span className='text-[rgba(255,255,255,0.76)]'>{sqft}ft</span></div>
                 </div>
             </div>
             <div className='px-5.5'>
-                <div className='flex justify-between h-[76px] items-center mt-2.5 border-t-1 border-[rgba(255,255,255,0.25)]'>
-                    <h3 className='font-SFNSExpanded text-[25px] text-white [-webkit-text-stroke:0.5px_#ffffff]'>₦{Number(price).toLocaleString()}<span className='text-[16px]'>/yr</span></h3>
+                <div className='flex justify-between gap-2 min-h-[76px] items-center mt-2.5 border-t-1 border-[rgba(255,255,255,0.25)]'>
+                    <h3 className='font-SFNSExpanded text-lg sm:text-[25px] text-white [-webkit-text-stroke:0.5px_#ffffff]'>₦{Number(price).toLocaleString()}<span className='text-sm sm:text-[16px]'>/yr</span></h3>
                     <Link to={`/home/listing/${id}`}>
-                        <Button className='h-[40px] font-WFVisualSans bg-[rgba(247,247,247,1)] font-semibold px-[16px] py-[10.5] text-[#003286] rounded-[100px]'>View Details</Button>
+                        <Button className='h-9 sm:h-[40px] shrink-0 font-WFVisualSans bg-[rgba(247,247,247,1)] font-semibold px-3 sm:px-[16px] text-[#003286] rounded-[100px]'>View Details</Button>
                     </Link>
                 </div>
             </div>

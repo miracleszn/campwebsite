@@ -14,7 +14,6 @@ import { CircleArrowRight } from 'lucide-react'
 import Testimonial from '@/components/Testimonial'
 import CampaignBox from '@/components/CampaignBox'
 import Footer from '@/components/Footer'
-import descriptionBg from '../assets/icons/descriptionBg.svg'
 import PropertyMap from '@/components/PropertyMap'
 
 
@@ -38,15 +37,15 @@ const Property = () => {
     const displayDescription = isExpanded ? description : `${description.substring(0, maxLength)}...`;
 
   return (
-    <div className='h-max bg-white'>
+    <div className='h-max overflow-x-hidden bg-white'>
         <NavBar/>
-        <div className='px-[77px]'>
-            <div className='h-max pb-[41px] mt-[123px] border-b border-[rgba(0,50,134,0.2)] flex gap-[59px]'>
+        <div className='px-4 sm:px-6 lg:px-[77px]'>
+            <div className='h-max pb-8 md:pb-[41px] mt-8 md:mt-[80px] lg:mt-[123px] border-b border-[rgba(0,50,134,0.2)] flex flex-col lg:flex-row gap-6 lg:gap-[59px]'>
                 <ListingImageSlider/>
-                <div className='flex-1 flex flex-col gap-[31px] bg-white'>
+                <div className='min-w-0 flex-1 flex flex-col gap-6 lg:gap-[31px] bg-white'>
                     <div className='flex gap-1.75 items-center'>
-                        <div className='flex flex-1 flex-col gap-1.75'>
-                            <h3 className='font-SFNSExpanded text-[25px] text-[#003286] [-webkit-text-stroke:0.7px_#003286]'>Ebby Lodge</h3>
+                        <div className='min-w-0 flex flex-1 flex-col gap-1.75'>
+                            <h3 className='font-SFNSExpanded text-xl sm:text-[25px] text-[#003286] [-webkit-text-stroke:0.7px_#003286]'>Ebby Lodge</h3>
                             <div className='flex items-center gap-0.75'><img className='border-[#003286]' src={locationBlueIcon} alt="" /><span className='text-[rgba(129,129,129,0.76)] font-WFVisualSans font-medium capitalize'>Old G.R.A, Koraka Lane, Port Harcourt, Rivers State.</span></div>
                         </div>
                         <Button onClick={() => setIsSaved(!isSaved)} className ='font-WFVisualSans h-[27px] p-0 font-bold flex gap-0.75 items-center text-[rgba(0,50,134,0.76)]'>
@@ -71,17 +70,17 @@ const Property = () => {
                 
                     <Separator className='bg-[rgba(0,50,134,0.2)]'/>
 
-                    <h3 className='font-SFNSExpanded leading-7 text-[30px] text-[#003286] [-webkit-text-stroke:1px_#003286]'>₦{Number(id).toLocaleString()},000,000<span className='text-[20px]'>/yr</span></h3>
+                    <h3 className='font-SFNSExpanded leading-7 text-2xl sm:text-[30px] text-[#003286] [-webkit-text-stroke:1px_#003286]'>₦{Number(id).toLocaleString()},000,000<span className='text-base sm:text-[20px]'>/yr</span></h3>
 
-                    <Button className='rounded-[100px] font-WFVisualSans text-[20px] font-bold h-max py-4 px-5 text-white bg-[#003286] border border-[rgba(0,50,134,0.5)]'>Add to waitlist</Button>
+                    <Button className='rounded-[100px] font-WFVisualSans text-base sm:text-[20px] font-bold h-max py-4 px-5 text-white bg-[#003286] border border-[rgba(0,50,134,0.5)]'>Add to waitlist</Button>
 
-                    <div className='h-max p-[25px] flex items-center gap-3.5 border border-[rgba(0,50,134,0.5)] rounded-[15px]'>
-                        <div className='h-[49px] w-[49px] rounded-full bg-[rgba(0,50,134,0.13)] content-center text-center font-WFVisualSans font-bold text-[22px] text-white'>D</div>
+                    <div className='h-max p-4 sm:p-[25px] flex flex-wrap items-center gap-3.5 border border-[rgba(0,50,134,0.5)] rounded-[15px]'>
+                        <div className='h-[49px] w-[49px] shrink-0 rounded-full bg-[rgba(0,50,134,0.13)] content-center text-center font-WFVisualSans font-bold text-[22px] text-white'>D</div>
                         <div className='flex-1'>
                             <h5 className='font-SFNSExpanded text-[18px] text-[#003286] [-webkit-text-stroke:0.5px_#003286]'>Denzel Crentsil</h5>
                             <p className='font-WFVisualSans font-medium text-[rgba(0,0,0,0.5)]'>Host - Hosted 2 years ago</p>
                         </div>
-                        <Button className='rounded-[100px] font-WFVisualSansfont-bold h-max py-2.5 px-4 text-white bg-[#003286]'>Meet the Owner</Button>
+                        <Button className='rounded-[100px] font-WFVisualSans font-bold h-max py-2.5 px-4 text-white bg-[#003286]'>Meet the Owner</Button>
                     </div>
                 </div>
             </div>
@@ -89,15 +88,15 @@ const Property = () => {
             
 
             {/* Description Row */}
-            <div className='h-[314px] flex gap-[44px] mt-[41px]'>
+            <div className='h-max flex flex-col md:flex-row gap-6 md:gap-[44px] mt-8 md:mt-[41px]'>
                 <div className='flex-1 flex flex-col gap-3'>
                     <h3 className='font-SFNSExpanded text-[24px] text-[#003286] [-webkit-text-stroke:0.5px_#003286]'>Description</h3>
-                    <p className='font-WFVisualSans description pr-3 flex-1 overflow-y-auto font-medium text-[rgba(0,0,0,0.5)]'>
+                    <p className='font-WFVisualSans description pr-3 font-medium text-[rgba(0,0,0,0.5)]'>
                         {displayDescription}
                         <Button variant="link" className='font-WFVisualSans font-bold text-[#003286]' onClick={() => setIsExpanded(!isExpanded)}>{isExpanded ? 'Show Less' : 'Show More'}</Button>
                     </p>
                 </div>
-                <div className='w-[399px] px-[35px] flex flex-col items-center justify-center gap-5.5 border border-[rgba(0,50,134,0.5)] rounded-[30px]'>
+                <div className='w-full md:max-w-[399px] shrink-0 px-5 sm:px-[35px] py-6 flex flex-col items-center justify-center gap-5.5 border border-[rgba(0,50,134,0.5)] rounded-[30px]'>
                     <img className='w-[67px]' src={cautionSign} alt="" />
                     <div className='text-center'>
                         <h5 className='font-SFNSExpanded text-[24px] text-[#003286] [-webkit-text-stroke:0.5px_#003286]'>Rent Warning</h5>
@@ -107,22 +106,22 @@ const Property = () => {
             </div> 
 
 
-            <Separator className='bg-[rgba(0,50,134,0.2)] my-[43px]'/>
+            <Separator className='bg-[rgba(0,50,134,0.2)] my-8 md:my-[43px]'/>
 
         </div>
 
 
-        <div className='bg-[rgba(235,235,235,0.71)] h-max py-[60px] flex flex-col items-center'>
-            <div className='w-fit h-fit flex flex-col items-center'>
-                <div className='h-[148px] mb-3.5 w-[148px] rounded-full bg-[rgba(0,50,134,0.13)] content-center text-center font-WFVisualSans font-bold text-[67px] text-white'>D</div>
-                <h4 className='font-SFNSExpanded leading-10 text-[40px] text-[#003286] [-webkit-text-stroke:1px_#003286]'>Denzel Crentsil</h4>
+        <div className='bg-[rgba(235,235,235,0.71)] h-max px-4 py-10 md:py-[60px] flex flex-col items-center'>
+            <div className='w-full h-fit flex flex-col items-center text-center'>
+                <div className='h-[120px] mb-3.5 w-[120px] sm:h-[148px] sm:w-[148px] rounded-full bg-[rgba(0,50,134,0.13)] content-center text-center font-WFVisualSans font-bold text-[56px] sm:text-[67px] text-white'>D</div>
+                <h4 className='font-SFNSExpanded leading-tight sm:leading-10 text-3xl sm:text-[40px] text-[#003286] [-webkit-text-stroke:1px_#003286]'>Denzel Crentsil</h4>
                 <span className='font-WFVisualSans font-medium text-[rgba(0,0,0,0.5)]'>Host - Hosted 2 years ago</span>
             </div>
-            <div className='font-WFVisualSans my-[25px] flex gap-2.5 h-[24px] font-bold text-[#003286]'>
+            <div className='font-WFVisualSans my-[25px] flex flex-wrap justify-center gap-x-4 gap-y-2 h-auto font-bold text-[#003286]'>
                 <div className='flex gap-0.75 items-center'><img src={microphoneBlueIcon} alt="" /> <span>Speaks English</span></div>
                 <div className='flex gap-0.75 items-center'><img src={locationBlueIcon} alt="" /> <span>Lives in Accra, Ghana</span></div>
             </div>
-            <div className='font-WFVisualSans w-[891px] font-medium text-[rgba(0,0,0,0.5)] mb-[43px] text-center'>
+            <div className='font-WFVisualSans w-full max-w-[891px] font-medium text-[rgba(0,0,0,0.5)] mb-[43px] text-center'>
                 <p className=''>Hi there! I'm Nathaniel, a warm and attentive host who genuinely enjoys meeting new people and making every guest feel at home. I take great care in maintaining a clean, comfortable, and inviting space so you can relax and enjoy your stay without a worry. My priority is to ensure a smooth, stress-free experience—offering thoughtful hospitality and quick support whenever you need it. Questions? Just reach out—I'm always here to help!</p>
             </div>
 
@@ -136,11 +135,11 @@ const Property = () => {
         <Testimonial/>
         <CampaignBox tag='Via Email' heading='Contact us' arrowIcon={false} option1='Via Email Address' option2='Via Phone Number'/>
         <Footer/>
-        <div className='h-[600px] bg-[#003286] flex'>
+        <div className='min-h-[400px] h-[70vh] max-h-[600px] bg-[#003286] flex flex-col md:flex-row'>
             <div className='flex-1'>
                 <h1>see properties on the map</h1>
             </div>
-            <div className='flex-[1.5] p-4 border'>
+            <div className='min-h-[300px] flex-[1.5] p-4 border'>
                 <PropertyMap/>
             </div>
         </div>
